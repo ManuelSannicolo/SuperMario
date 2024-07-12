@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super Mario</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- contenitore impostazione > possibilità di riazzerare i dati, tornare home e verificare i tasti -->
+    <div id="setting">
+        <img src="elements/hud/gear.png"  id="gear">
+        <div id="overlay">
+            <div id="page1">
+                <h1>Setting</h1>
+                <div id="left">
+                    <h2 class="title">Reset</h2>
+                    <div class="container" id="containerReset">
+                        <div class="container" id="returnHome">
+                            <img src="elements/blocks/overworld/block.png">
+                            <h4>Return Home</h4>
+                        </div>
+                        <div class="container" id="reset">
+                            <img src="elements/blocks/underground/block.png">
+                            <h4>Reset ALL progress</h4>
+                        </div>
+                    </div>
+                </div>
+                <div id="right">
+                    <h2 class="title">Control</h2>
+                    <ul>
+                        <li>
+                            <h1 class="controls">A</h1>
+                            <h4>go back</h4>
+                        </li>
+                        <li>
+                            <h1 class="controls">S</h1>
+                            <h4>Sit</h4>
+                        </li>
+                        <li>
+                            <h1 class="controls">D</h1>
+                            <h4>Go ahed</h4>
+                        </li>
+                        <li>
+                            <h1 class="controls">SPACE</h1>
+                            <h4>Jump</h4>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- contenitore gioco -->
+    <div id="game">
+    </div>
+
+    <script src="js/gsap.min.js"></script>
+    <script src="js/phaser.js"></script>
+    <script src="js/main.js" type="module"></script>
+    <script type="module" src="js/setting.js"></script>
+</body>
+</html>
