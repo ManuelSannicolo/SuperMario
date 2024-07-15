@@ -1,4 +1,4 @@
-import { changeToSelectLevel } from './main.js';
+import { changeToLevelSelection } from './main.js';
 
 document.addEventListener("DOMContentLoaded", () => {
     var gear = document.querySelector("#gear");
@@ -56,6 +56,6 @@ function reset(){
         localStorage.setItem('level3unlocked', false);
         localStorage.setItem('level4unlocked', false);
         localStorage.setItem('level5unlocked', false);
-        changeToSelectLevel()
+        changeToLevelSelection()
     }
 }

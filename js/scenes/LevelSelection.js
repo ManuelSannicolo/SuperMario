@@ -1,3 +1,9 @@
+import { changeToLevel1 } from './main.js';
+import { changeToLevel2 } from './main.js';
+import { changeToLevel3 } from './main.js';
+import { changeToLevel4 } from './main.js';
+import { changeToLevel5 } from './main.js';
+
 export default class SelectLevelScene extends Phaser.Scene{
 
     constructor() {
@@ -81,7 +87,7 @@ export default class SelectLevelScene extends Phaser.Scene{
             if(level.unlocked){
                 const block = this.add.image(position, y, 'block').setScale(4).setInteractive();
                 block.on('pointerdown', () =>{
-                    this.scene.start(level.key);
+                    changeLevel(index);
                 });
             } else 
                 this.add.image(position, y , 'block_underground').setScale(4);
@@ -98,7 +104,16 @@ export default class SelectLevelScene extends Phaser.Scene{
         })
 
         
-
+        function changeLevel(n){
+            switch((n+1)){
+                case 1: changeToLevel1();
+                case 2: changeToLevel2();
+                case 3: changeToLevel3();
+                case 4: changeToLevel4();
+                case 5: changeToLevel5();
+                default: changeToLevel1();
+            }
+        }
 
 
     }
