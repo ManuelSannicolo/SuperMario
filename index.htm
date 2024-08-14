@@ -8,56 +8,97 @@
 </head>
 <body>
 
-    <!-- contenitore impostazione > possibilità di riazzerare i dati, tornare home e verificare i tasti -->
-    <div id="setting">
-        <img src="elements/hud/gear.png"  id="gear">
-        <div id="overlay">
-            <div id="page1">
-                <h1>Setting</h1>
-                <div id="left">
-                    <h2 class="title">Reset</h2>
-                    <div class="container" id="containerReset">
-                        <div class="container" id="returnHome">
-                            <img src="elements/blocks/overworld/block.png">
-                            <h4>Return Home</h4>
-                        </div>
-                        <div class="container" id="reset">
-                            <img src="elements/blocks/underground/block.png">
-                            <h4>Reset ALL progress</h4>
+    
+    
+    <!-- contenitore gioco -->
+    <div id="game">
+
+        <!-- contenitore impostazione > possibilità di riazzerare i dati, tornare home e verificare i tasti -->
+        <div id="setting">
+            <img src="elements/hud/gear.png"  id="gear">
+            <div id="overlay">
+                <div id="page1">
+                    <h1>Setting</h1>
+                    <div id="left">
+                        <h2 class="title">Reset</h2>
+                        <div class="container" id="containerReset">
+                            <div class="container" id="returnHome">
+                                <img src="elements/blocks/overworld/block.png">
+                                <h4>Return Home</h4>
+                            </div>
+                            <div class="container" id="reset">
+                                <img src="elements/blocks/underground/block.png">
+                                <h4>Reset ALL progress</h4>
+                            </div>
                         </div>
                     </div>
+                    <div id="right">
+                        <h2 class="title">Control</h2>
+                        <ul>
+                            <li>
+                                <h1 class="controls">A</h1>
+                                <h4>go back</h4>
+                            </li>
+                            <li>
+                                <h1 class="controls">S</h1>
+                                <h4>Fireball</h4>
+                            </li>
+                            <li>
+                                <h1 class="controls">D</h1>
+                                <h4>Go ahed</h4>
+                            </li>
+                            <li>
+                                <h1 class="controls">SPACE</h1>
+                                <h4>Jump</h4>
+                            </li>
+                        </ul>
+                    </div>
+                    <button id="nextPage" class="page_button">Go to Scores</button>
                 </div>
-                <div id="right">
-                    <h2 class="title">Control</h2>
-                    <ul>
-                        <li>
-                            <h1 class="controls">A</h1>
-                            <h4>go back</h4>
-                        </li>
-                        <li>
-                            <h1 class="controls">S</h1>
-                            <h4>Sit</h4>
-                        </li>
-                        <li>
-                            <h1 class="controls">D</h1>
-                            <h4>Go ahed</h4>
-                        </li>
-                        <li>
-                            <h1 class="controls">SPACE</h1>
-                            <h4>Jump</h4>
-                        </li>
-                    </ul>
+
+                <div id="page2">
+                    <table id="data_table">
+                        <thead>
+                            <tr>
+                                <td class="cell_title">Data</td>
+                                <td class="cell_title">Score</td>
+                                <td class="cell_title">Completed</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- righe dei punteggi -->
+                        </tbody>
+                    </table>
+                    <button id="previousPage" class="page_button">Go to Scores</button>
                 </div>
             </div>
         </div>
+    
+        <!-- ovrlay di fine livello  -->
+        <div id="complete_overlay">
+            <div id="complete_text"></div>
+            <div id="complete_score"></div>
+        </div>
+
+        <!-- overlay richiesta conferma reset dati impostazioni -->
+        <div id="resetOverlay">
+            <div id="content">
+                <p>Sei sicuro di voler resettare i tuoi progressi?</p>
+                <button id="confirmReset" class="overlay_button">Conferma</button>
+                <button id="cancelReset" class="overlay_button">Annulla</button>
+            </div>
+        </div>
+
+
     </div>
 
-    <!-- contenitore gioco -->
-    <div id="game">
-    </div>
+    
 
     <script src="js/gsap.min.js"></script>
     <script src="js/phaser.js"></script>
+    <script type="module" src="js/loadResources.js"></script>
+    <script type="module" src="js/player_movement.js"></script>
+    <script type="module" src="js/entities.js"></script>
     <script src="js/main.js" type="module"></script>
     <script src="js/setting.js" type="module" ></script>
 </body>

@@ -1,29 +1,18 @@
-import { changeToLevel1 } from './main.js';
-import { changeToLevel2 } from './main.js';
-import { changeToLevel3 } from './main.js';
-import { changeToLevel4 } from './main.js';
-import { changeToLevel5 } from './main.js';
+import { changeToLevel1 } from '../main.js';
+import { changeToLevel2 } from '../main.js';
+import { changeToLevel3 } from '../main.js';
+import { changeToLevel4 } from '../main.js';
+import { changeToLevel5 } from '../main.js';
+import { loadResources } from '../loadResources.js';
 
-export default class SelectLevelScene extends Phaser.Scene{
+export default class LevelSelection extends Phaser.Scene{
 
     constructor() {
-        super('SelectLevel');
-    }
+        super('LevelSelection');
+    }    
 
     preload() {
-        this.load.image("block", "elements/blocks/overworld/block.png");
-        this.load.image("block_underground", "elements/blocks/underground/block.png");
-
-        this.load.image("bush1", "elements/scenery/overworld/bush1.png");
-        this.load.image("bush2", "elements/scenery/overworld/bush2.png");
-        this.load.image("cloud1", "elements/scenery/overworld/cloud1.png");
-        this.load.image("cloud2", "elements/scenery/overworld/cloud2.png");
-        this.load.image("fence", "elements/scenery/overworld/fence.png");
-        this.load.image("floorbricks", "elements/scenery/overworld/floorbricks.png");
-        this.load.image("mountain1", "elements/scenery/overworld/mountain1.png");
-        this.load.image("mountain2", "elements/scenery/overworld/mountain2.png");
-
-        this.load.image("floorbricks", "elements/scenery/overworld/floorbricks.png");
+        loadResources(this);
     }
 
 
@@ -32,9 +21,8 @@ export default class SelectLevelScene extends Phaser.Scene{
         console.log("creato Select Level");
 
         //const
-        const screenWidth = window.innerWidth;
-        const screenHeight = window.innerHeight * 1.1;
-
+        const screenWidth = this.scale.width;
+        const screenHeight = this.scale.height * 1.1;
         //bg color
         this.cameras.main.setBackgroundColor("rgb(132,132,255)")
 
@@ -79,15 +67,18 @@ export default class SelectLevelScene extends Phaser.Scene{
             {key:'level5', unlocked: localStorage.getItem('level5unlocked') === 'true'},
         ];
 
+        var fontsize = 28 + Math.floor(screenWidth/1800); //dimension of text based on screen width
+        
         levels.forEach((level, index) => {
             let position= inlinePadding+(blockDimension/2)+(gap+blockDimension)*index;
             const y = screenHeight/2;
-            let fontsize = 28 + Math.floor(screenWidth/1800);
+
 
             if(level.unlocked){
                 const block = this.add.image(position, y, 'block').setScale(4).setInteractive();
                 block.on('pointerdown', () =>{
                     changeLevel(index);
+                    console.log("creato livello "+index)
                 });
             } else 
                 this.add.image(position, y , 'block_underground').setScale(4);
@@ -103,15 +94,24 @@ export default class SelectLevelScene extends Phaser.Scene{
 
         })
 
+        //score
+        var score = localStorage.getItem("score");
+        console.log(score);
+        this.add.text(screenWidth/2, screenHeight/2.7, "Total score: "+score,{
+            fontFamily: 'pixel',
+            fontSize: fontsize,
+            color:"#f0f0f0",
+        }).setOrigin(0.5);
+
         
         function changeLevel(n){
             switch((n+1)){
-                case 1: changeToLevel1();
-                case 2: changeToLevel2();
-                case 3: changeToLevel3();
-                case 4: changeToLevel4();
-                case 5: changeToLevel5();
-                default: changeToLevel1();
+                case 1: changeToLevel1(); break;
+                case 2: changeToLevel2(); break;
+                case 3: changeToLevel3(); break;
+                case 4: changeToLevel4(); break;
+                case 5: changeToLevel5(); break;
+                default: changeToLevel1(); break;
             }
         }
 
